@@ -1,9 +1,6 @@
 import { Component } from "@angular/core";
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpParams
-} from "@angular/common/http";
+import { HttpClientService } from "./http-client.service";
+
 //import { toPromise } from "rxjs/operators";
 
 @Component({
@@ -13,91 +10,49 @@ import {
 })
 
 export class AppComponent {
-  apiRoot: string = "https://httpbin.org";
 
-  constructor(private http: HttpClient) {}
+  constructor( private httpService : HttpClientService) {}
 
-  doGET() {
-    console.log("GET");
-    let url = `${this.apiRoot}/get`;
-    const httpOptions = {
-      params: new HttpParams().set("foo", "moo").set("limit", "25")
-    };
-    this.http.get(url, httpOptions).subscribe(res => console.log(res));
+  get() {
+    console.log("GET FROM HTTP-CLIENT-SERVICE");
+    this.httpService.doGET()
   }
 
-  doPOST() {
-    console.log("POST");
-    let url = `${this.apiRoot}/post`;
-    const httpOptions = {
-      params: new HttpParams().set("foo", "moo").set("limit", "25")
-    };
-    this.http.post(url, { moo: "foo", goo: "loo" }, httpOptions).subscribe(res => console.log(res));
+  post() {
+    console.log("POST FROM HTTP-CLIENT-SERVICE");
+    this.httpService.doPOST()
   }
 
-  doPUT() {
-    console.log("PUT");
-    let url = `${this.apiRoot}/put`;
-    const httpOptions = {
-      params: new HttpParams().set("foo", "moo").set("limit", "25")
-    };
-    this.http.put(url, { moo: "foo", goo: "loo" }, httpOptions).subscribe(res => console.log(res));
+  put() {
+    console.log("PUT FROM HTTP-CLIENT-SERVICE");
+    this.httpService.doPUT()
   }
 
-  doDELETE() {
-    console.log("DELETE");
-    let url = `${this.apiRoot}/delete`;
-    const httpOptions = {
-      params: new HttpParams().set("foo", "moo").set("limit", "25")
-    };
-    this.http.delete(url, httpOptions).subscribe(res => console.log(res));
+  delete() {
+    console.log("DELETE FROM HTTP-CLIENT-SERVICE");
+    this.httpService.doDELETE()
   }
 
-  doGETAsPromise() {
-    console.log("GET AS PROMISE");
-    let url = `${this.apiRoot}/get`;
-    this.http
-      .get(url)
-      .toPromise()
-      .then(res => console.log(res));
+  getAsPromise() {
+    console.log("GET AS PROMISE FROM HTTP-CLIENT-SERVICE");
+    this.httpService.doGETAsPromise()
   }
 
-  doGETAsPromiseError() {
-    console.log("GET AS PROMISE ERROR");
-    let url = `${this.apiRoot}/post`;
-    this.http
-      .get(url)
-      .toPromise()
-      .then(
-        res => console.log(res),
-        msg => console.error(`Error: ${msg.status} ${msg.statusText}`)
-      );
+  getAsPromiseError() {
+    console.log("GET AS PROMISE ERROR FROM HTTP-CLIENT-SERVICE");
+    this.httpService.doGETAsPromiseError()
   }
 
   // To catch an error, we call the get method with wrong resource : apiRoot
-  doGETAsObservableError() {
-    console.log("GET AS OBSERVABLE ERROR");
-    let url = `${this.apiRoot}/post`;
-    this.http.get(url).subscribe(
-        res => console.log(res),
-        msg => console.error(`Error: ${msg.status} ${msg.statusText}`)
-      );
+  getAsObservableError() {
+    console.log("GET AS OBSERVABLE ERROR FROM HTTP-CLIENT-SERVICE");
+    this.httpService.doGETAsObservableError()
+    
   }
 
-  doGETWithHeaders() {
-    console.log("GET WITH HEADERS");
-
-    let url = `${this.apiRoot}/get`;
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: btoa("username:password")
-      })
-    };
-
-    this.http.get(url, httpOptions).subscribe(
-        res => console.log(res),
-        msg => console.error(`Error: ${msg.status} ${msg.statusText}`)
-      );
+  getWithHeaders() {
+    console.log("GET WITH HEADERS FROM HTTP-CLIENT-SERVICE");
+    this.httpService.doGETWithHeaders()
   }
+ 
 }

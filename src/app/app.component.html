@@ -1,22 +1,22 @@
 <div class="row">
   <div class="m-2">
-    <button class="btn btn-primary me-2 " (click)="doGET()">GET</button>
-    <button class="btn btn-primary me-2" (click)="doPOST()">POST</button>
-    <button class="btn btn-primary me-2" (click)="doPUT()">PUT</button>
-    <button class="btn btn-primary me-2" (click)="doDELETE()">DELETE</button>
+    <button class="btn btn-primary me-2 " (click)="get()">GET</button>
+    <button class="btn btn-primary me-2" (click)="post()">POST</button>
+    <button class="btn btn-primary me-2" (click)="put()">PUT</button>
+    <button class="btn btn-primary me-2" (click)="delete()">DELETE</button>
   </div>
 </div>
 
 <div class="row">
   <div class="m-2">
-    <button class="btn btn-secondary me-2" (click)="doGETAsPromise()">As Promise</button>
-    <button class="btn btn-secondary me-2" (click)="doGETAsPromiseError()">Error as Promise</button>
-    <button class="btn btn-secondary me-2" (click)="doGETAsObservableError()">Error as Observable</button>
+    <button class="btn btn-secondary me-2" (click)="getAsPromise()">As Promise</button>
+    <button class="btn btn-secondary me-2" (click)="getAsPromiseError()">Error as Promise</button>
+    <button class="btn btn-secondary me-2" (click)="getAsObservableError()">Error as Observable</button>
   </div>
 </div>
 
 <div class="row">
   <div class="m-2">
-    <button class="btn btn-danger" (click)="doGETWithHeaders()">With Headers</button>
+    <button class="btn btn-danger" (click)="getWithHeaders()">With Headers</button>
   </div>
 </div>
